@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terraform Series — Course Map</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .header h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: -1px;
+    }
+    .header h1 span { color: #818cf8; }
+    .header p {
+      margin-top: 10px;
+      color: #94a3b8;
+      font-size: 1.05rem;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 16px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+    .path {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .card:hover { border-color: #818cf8; }
+    .lab-num {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .beginner     { background: #166534; }
+    .intermediate { background: #1d4ed8; }
+    .advanced     { background: #7e22ce; }
+    .expert       { background: #b91c1c; }
+    .card-body { flex: 1; }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+    }
+    .card-desc {
+      color: #94a3b8;
+      font-size: 0.93rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .topic {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      font-family: monospace;
+    }
+    .level-badge {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+    .lv-beginner     { background: #14532d; color: #86efac; }
+    .lv-intermediate { background: #1e3a8a; color: #93c5fd; }
+    .lv-advanced     { background: #4a1d96; color: #d8b4fe; }
+    .lv-expert       { background: #7f1d1d; color: #fca5a5; }
+    .connector {
+      width: 2px;
+      height: 16px;
+      background: #334155;
+      margin: 0 auto;
+      max-width: 860px;
+    }
+    .section-label {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #475569;
+      margin: 8px 0 4px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      color: #475569;
+      font-size: 0.85rem;
+    }
+    .footer strong { color: #94a3b8; }
+    .note {
+      max-width: 860px;
+      margin: 0 auto 24px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-left: 4px solid #818cf8;
+      border-radius: 8px;
+      padding: 14px 18px;
+      color: #94a3b8;
+      font-size: 0.88rem;
+    }
+    .note strong { color: #e2e8f0; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🟣 <span>Terraform</span> Series</h1>
+  <p>Beginner → Expert · 11 Labs · Infrastructure as Code</p>
+  <div class="badge">📁 ~/Documents/rhce/terraform-labs/ &nbsp;|&nbsp; Practice: ~/terraform-labs/</div>
+</div>
+
+<div class="note">
+  ⚡ <strong>Labs 00–02 require no AWS account.</strong> Start there. Come back for Lab 03+ once you have AWS credentials configured via <code>aws configure</code>.
+</div>
+
+<div class="path">
+
+  <div class="section-label">— Beginner —</div>
+
+  <div class="card">
+    <div class="lab-num beginner">00</div>
+    <div class="card-body">
+      <div class="card-title">Introduction to Terraform</div>
+      <div class="card-desc">What Terraform is, how it thinks (Write → Plan → Apply → Destroy), key files, and the declarative model. Understand state, providers, and how Terraform compares desired vs actual infrastructure.</div>
+      <div class="topics">
+        <span class="topic">IaC concepts</span>
+        <span class="topic">terraform init</span>
+        <span class="topic">terraform plan</span>
+        <span class="topic">terraform apply</span>
+        <span class="topic">terraform destroy</span>
+        <span class="topic">.tfstate</span>
+        <span class="topic">providers</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num beginner">01</div>
+    <div class="card-body">
+      <div class="card-title">Your First Resource (No AWS Needed)</div>
+      <div class="card-desc">Write your first HCL config using the local provider to create files on disk. Run the full init → plan → apply → modify → destroy cycle. Learn terraform fmt and validate.</div>
+      <div class="topics">
+        <span class="topic">HCL syntax</span>
+        <span class="topic">local_file</span>
+        <span class="topic">resource block</span>
+        <span class="topic">terraform fmt</span>
+        <span class="topic">terraform validate</span>
+        <span class="topic">state file</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num beginner">02</div>
+    <div class="card-body">
+      <div class="card-title">Variables and Outputs</div>
+      <div class="card-desc">Stop hardcoding values. Define input variables with types and defaults. Store values in terraform.tfvars. Surface important results with output values. Understand variable precedence.</div>
+      <div class="topics">
+        <span class="topic">variable block</span>
+        <span class="topic">var.name</span>
+        <span class="topic">terraform.tfvars</span>
+        <span class="topic">output block</span>
+        <span class="topic">sensitive = true</span>
+        <span class="topic">-var flag</span>
+        <span class="topic">type constraints</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num beginner">03</div>
+    <div class="card-body">
+      <div class="card-title">AWS Provider — Real Cloud Resources</div>
+      <div class="card-desc">Connect Terraform to AWS. Create an S3 bucket with versioning, then an EC2 instance. Learn data sources to read existing resources. Always destroy when done to avoid charges.</div>
+      <div class="topics">
+        <span class="topic">provider "aws"</span>
+        <span class="topic">aws_s3_bucket</span>
+        <span class="topic">aws_instance</span>
+        <span class="topic">data sources</span>
+        <span class="topic">aws_ami</span>
+        <span class="topic">resource tags</span>
+        <span class="topic">free tier</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+  <div class="section-label">— Intermediate —</div>
+
+  <div class="card">
+    <div class="lab-num intermediate">04</div>
+    <div class="card-body">
+      <div class="card-title">State Management</div>
+      <div class="card-desc">Understand what the state file does and why local state is dangerous for teams. Set up S3 remote backend with DynamoDB locking. Learn state commands for moving, removing, and importing resources.</div>
+      <div class="topics">
+        <span class="topic">terraform.tfstate</span>
+        <span class="topic">S3 backend</span>
+        <span class="topic">DynamoDB locking</span>
+        <span class="topic">terraform state list</span>
+        <span class="topic">terraform state mv</span>
+        <span class="topic">terraform import</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num intermediate">05</div>
+    <div class="card-body">
+      <div class="card-title">Modules — Reusable Infrastructure</div>
+      <div class="card-desc">Build reusable module directories so you stop copy-pasting configs. Call the same module for dev, staging, and prod. Use the public Terraform Registry for community modules. Pin versions.</div>
+      <div class="topics">
+        <span class="topic">module block</span>
+        <span class="topic">source = "./path"</span>
+        <span class="topic">module outputs</span>
+        <span class="topic">registry modules</span>
+        <span class="topic">version pinning</span>
+        <span class="topic">module composition</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num intermediate">06</div>
+    <div class="card-body">
+      <div class="card-title">Workspaces — Dev / Staging / Prod</div>
+      <div class="card-desc">Manage multiple environments from a single codebase using workspaces. Each workspace gets its own state file. Use terraform.workspace in configs to change behavior per environment.</div>
+      <div class="topics">
+        <span class="topic">terraform workspace new</span>
+        <span class="topic">terraform workspace select</span>
+        <span class="topic">terraform.workspace</span>
+        <span class="topic">locals block</span>
+        <span class="topic">lookup()</span>
+        <span class="topic">env-aware naming</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+  <div class="section-label">— Advanced —</div>
+
+  <div class="card">
+    <div class="lab-num advanced">07</div>
+    <div class="card-body">
+      <div class="card-title">Terraform + Ansible Together</div>
+      <div class="card-desc">Use Terraform to provision cloud infrastructure, then hand off to Ansible to configure it. Bridge the two tools via terraform output to generate Ansible inventory. The ultimate IaC stack.</div>
+      <div class="topics">
+        <span class="topic">terraform output</span>
+        <span class="topic">dynamic inventory</span>
+        <span class="topic">local-exec provisioner</span>
+        <span class="topic">aws_ec2 plugin</span>
+        <span class="topic">deploy pipeline</span>
+        <span class="topic">provision + configure</span>
+      </div>
+    </div>
+    <span class="level-badge lv-advanced">Advanced</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num advanced">08</div>
+    <div class="card-body">
+      <div class="card-title">Security — IAM, Secrets, and Best Practices</div>
+      <div class="card-desc">Write secure Terraform: never hardcode credentials, use least-privilege IAM, encrypt state with KMS, mark sensitive variables, use Secrets Manager, and scan code with tfsec.</div>
+      <div class="topics">
+        <span class="topic">no hardcoded creds</span>
+        <span class="topic">least privilege IAM</span>
+        <span class="topic">sensitive = true</span>
+        <span class="topic">KMS encryption</span>
+        <span class="topic">Secrets Manager</span>
+        <span class="topic">tfsec scanner</span>
+        <span class="topic">.gitignore</span>
+      </div>
+    </div>
+    <span class="level-badge lv-advanced">Advanced</span>
+  </div>
+
+  <div class="connector"></div>
+  <div class="section-label">— Expert —</div>
+
+  <div class="card">
+    <div class="lab-num expert">09</div>
+    <div class="card-body">
+      <div class="card-title">CI/CD with GitHub Actions</div>
+      <div class="card-desc">Automate Terraform with GitHub Actions: run terraform plan on every PR (posts output as a comment), apply automatically on merge to main. Add environment approval gates for production.</div>
+      <div class="topics">
+        <span class="topic">GitHub Actions workflow</span>
+        <span class="topic">plan on PR</span>
+        <span class="topic">apply on merge</span>
+        <span class="topic">GitHub Secrets</span>
+        <span class="topic">environment gates</span>
+        <span class="topic">tfsec in CI</span>
+        <span class="topic">-no-color</span>
+      </div>
+    </div>
+    <span class="level-badge lv-expert">Expert</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num expert">10</div>
+    <div class="card-body">
+      <div class="card-title">Full Project — Production VPC</div>
+      <div class="card-desc">Capstone project: build a complete production-grade AWS environment. Multi-AZ VPC, public/private subnets, Internet Gateway, NAT Gateway, bastion host, app servers, security groups, remote state, and tags. Everything modular.</div>
+      <div class="topics">
+        <span class="topic">multi-AZ VPC</span>
+        <span class="topic">public/private subnets</span>
+        <span class="topic">NAT Gateway</span>
+        <span class="topic">bastion host</span>
+        <span class="topic">security groups</span>
+        <span class="topic">module composition</span>
+        <span class="topic">default_tags</span>
+        <span class="topic">full production</span>
+      </div>
+    </div>
+    <span class="level-badge lv-expert">Expert ✓</span>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Created: 2026-04-07 &nbsp;|&nbsp; <strong>Terraform v1.14.7</strong> &nbsp;|&nbsp; Installed: <strong>/opt/homebrew/bin/terraform</strong></p>
+  <p style="margin-top:8px;">Complete labs 00–02 first (no AWS needed) · Always <strong>terraform destroy</strong> when done · Never commit .tfstate to Git</p>
+</div>
+
+</body>
+</html>

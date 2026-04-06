@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ansible Series — Course Map</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .header h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: -1px;
+    }
+    .header h1 span { color: #ef4444; }
+    .header p {
+      margin-top: 10px;
+      color: #94a3b8;
+      font-size: 1.05rem;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 16px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+    .path {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .card:hover { border-color: #ef4444; }
+    .lab-num {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .beginner   { background: #166534; }
+    .intermediate { background: #1d4ed8; }
+    .advanced   { background: #7e22ce; }
+    .expert     { background: #b91c1c; }
+    .card-body { flex: 1; }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+    }
+    .card-desc {
+      color: #94a3b8;
+      font-size: 0.93rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .topic {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      font-family: monospace;
+    }
+    .level-badge {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+    .lv-beginner     { background: #14532d; color: #86efac; }
+    .lv-intermediate { background: #1e3a8a; color: #93c5fd; }
+    .lv-advanced     { background: #4a1d96; color: #d8b4fe; }
+    .lv-expert       { background: #7f1d1d; color: #fca5a5; }
+    .connector {
+      width: 2px;
+      height: 16px;
+      background: #334155;
+      margin: 0 auto;
+      max-width: 860px;
+    }
+    .section-label {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #475569;
+      margin: 8px 0 4px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      color: #475569;
+      font-size: 0.85rem;
+    }
+    .footer strong { color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🔴 <span>Ansible</span> Series</h1>
+  <p>Beginner → RHCE Expert · 10 Labs · Hands-On Practice</p>
+  <div class="badge">📁 ~/Documents/rhce/ansible-labs/ &nbsp;|&nbsp; Practice: ~/ansible-practice/</div>
+</div>
+
+<div class="path">
+
+  <div class="section-label">— Beginner —</div>
+
+  <div class="card">
+    <div class="lab-num beginner">00</div>
+    <div class="card-body">
+      <div class="card-title">Getting Started</div>
+      <div class="card-desc">Install Ansible, understand how it works, run your first ad-hoc commands against localhost. Learn the difference between ad-hoc commands and playbooks.</div>
+      <div class="topics">
+        <span class="topic">ansible --version</span>
+        <span class="topic">ad-hoc commands</span>
+        <span class="topic">-m ping</span>
+        <span class="topic">inventory basics</span>
+        <span class="topic">first playbook</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num beginner">01</div>
+    <div class="card-body">
+      <div class="card-title">Variables and Facts</div>
+      <div class="card-desc">Store and reuse data with variables. Discover how Ansible automatically collects system info (facts) like hostname, OS, RAM, and IP. Capture task output with register.</div>
+      <div class="topics">
+        <span class="topic">vars:</span>
+        <span class="topic">{{ variable }}</span>
+        <span class="topic">gather_facts</span>
+        <span class="topic">ansible_*</span>
+        <span class="topic">register:</span>
+        <span class="topic">vars_files:</span>
+        <span class="topic">-e flag</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num beginner">02</div>
+    <div class="card-body">
+      <div class="card-title">Conditionals and Loops</div>
+      <div class="card-desc">Control which tasks run using when: conditions. Repeat tasks over lists and dictionaries with loop:. Combine both for powerful filtering logic.</div>
+      <div class="topics">
+        <span class="topic">when:</span>
+        <span class="topic">loop:</span>
+        <span class="topic">item</span>
+        <span class="topic">loop_control:</span>
+        <span class="topic">is defined</span>
+        <span class="topic">dict loops</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+  <div class="section-label">— Intermediate —</div>
+
+  <div class="card">
+    <div class="lab-num intermediate">03</div>
+    <div class="card-body">
+      <div class="card-title">Handlers and Jinja2 Templates</div>
+      <div class="card-desc">Trigger service restarts only when config changes using handlers. Generate dynamic config files from templates using Jinja2 — variables, loops, and conditionals inside files.</div>
+      <div class="topics">
+        <span class="topic">notify:</span>
+        <span class="topic">handlers:</span>
+        <span class="topic">template:</span>
+        <span class="topic">.j2 files</span>
+        <span class="topic">Jinja2 filters</span>
+        <span class="topic">{% if %}</span>
+        <span class="topic">{% for %}</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num intermediate">04</div>
+    <div class="card-body">
+      <div class="card-title">Roles — Organized, Reusable Playbooks</div>
+      <div class="card-desc">Stop writing monolithic playbooks. Structure tasks, handlers, templates, and variables into roles. Use ansible-galaxy to generate skeletons and install community roles.</div>
+      <div class="topics">
+        <span class="topic">ansible-galaxy role init</span>
+        <span class="topic">tasks/main.yml</span>
+        <span class="topic">defaults/main.yml</span>
+        <span class="topic">handlers/main.yml</span>
+        <span class="topic">meta/main.yml</span>
+        <span class="topic">dependencies</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num intermediate">05</div>
+    <div class="card-body">
+      <div class="card-title">Inventory and Groups</div>
+      <div class="card-desc">Manage multiple hosts and environments. Group servers logically (webservers, databases). Use group_vars and host_vars for clean variable organization. Introduction to dynamic inventory for cloud environments.</div>
+      <div class="topics">
+        <span class="topic">INI / YAML inventory</span>
+        <span class="topic">group_vars/</span>
+        <span class="topic">host_vars/</span>
+        <span class="topic">group:children</span>
+        <span class="topic">host patterns</span>
+        <span class="topic">dynamic inventory</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num intermediate">06</div>
+    <div class="card-body">
+      <div class="card-title">Ansible Vault — Encrypting Secrets</div>
+      <div class="card-desc">Encrypt passwords, API keys, and credentials using AES-256. Commit encrypted secrets safely to Git. Use vault password files for automation. Encrypt individual variables inline.</div>
+      <div class="topics">
+        <span class="topic">ansible-vault create</span>
+        <span class="topic">ansible-vault encrypt</span>
+        <span class="topic">ansible-vault edit</span>
+        <span class="topic">sensitive: true</span>
+        <span class="topic">vault IDs</span>
+        <span class="topic">--ask-vault-pass</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+  <div class="section-label">— Advanced —</div>
+
+  <div class="card">
+    <div class="lab-num advanced">07</div>
+    <div class="card-body">
+      <div class="card-title">Error Handling and Debugging</div>
+      <div class="card-desc">Handle failures gracefully instead of crashing. Use block/rescue/always (try/catch/finally). Define custom failure conditions. Debug with verbosity flags and step-through mode.</div>
+      <div class="topics">
+        <span class="topic">ignore_errors:</span>
+        <span class="topic">failed_when:</span>
+        <span class="topic">changed_when:</span>
+        <span class="topic">block/rescue/always</span>
+        <span class="topic">-v / -vvv</span>
+        <span class="topic">--check --diff</span>
+        <span class="topic">tags</span>
+      </div>
+    </div>
+    <span class="level-badge lv-advanced">Advanced</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num advanced">08</div>
+    <div class="card-body">
+      <div class="card-title">Advanced Playbooks</div>
+      <div class="card-desc">Production deployment patterns: rolling updates with serial, task delegation for load balancer coordination, async background tasks, retry loops, and modular playbook includes.</div>
+      <div class="topics">
+        <span class="topic">serial:</span>
+        <span class="topic">delegate_to:</span>
+        <span class="topic">run_once:</span>
+        <span class="topic">async/poll</span>
+        <span class="topic">until/retries</span>
+        <span class="topic">include_tasks</span>
+        <span class="topic">pre_tasks/post_tasks</span>
+      </div>
+    </div>
+    <span class="level-badge lv-advanced">Advanced</span>
+  </div>
+
+  <div class="connector"></div>
+  <div class="section-label">— Expert —</div>
+
+  <div class="card">
+    <div class="lab-num expert">09</div>
+    <div class="card-body">
+      <div class="card-title">Full Project — Production Web Stack</div>
+      <div class="card-desc">Everything together: deploy a full LEMP stack (Linux, Nginx, MariaDB, PHP) using roles, vault, templates, handlers, rolling deployment, and post-task verification. The capstone project.</div>
+      <div class="topics">
+        <span class="topic">multi-role playbook</span>
+        <span class="topic">vault secrets</span>
+        <span class="topic">rolling serial: 1</span>
+        <span class="topic">pre/post tasks</span>
+        <span class="topic">no_log: true</span>
+        <span class="topic">--limit / --tags</span>
+        <span class="topic">full stack deploy</span>
+      </div>
+    </div>
+    <span class="level-badge lv-expert">Expert ✓</span>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Created: 2026-04-07 &nbsp;|&nbsp; <strong>RHCE Prep Series</strong> &nbsp;|&nbsp; Practice files: <strong>~/ansible-practice/</strong></p>
+  <p style="margin-top:8px;">Complete all labs in order · Do every challenge · Run <strong>--check --diff</strong> before every production apply</p>
+</div>
+
+</body>
+</html>

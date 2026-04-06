@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Linux Hardening Series — Course Map</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .header h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: -1px;
+    }
+    .header h1 span { color: #22c55e; }
+    .header p {
+      margin-top: 10px;
+      color: #94a3b8;
+      font-size: 1.05rem;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 16px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+    .path {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 22px 24px;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .card:hover { border-color: #22c55e; }
+    .lab-num {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .beginner     { background: #166534; }
+    .intermediate { background: #1d4ed8; }
+    .advanced     { background: #7e22ce; }
+    .expert       { background: #b91c1c; }
+    .card-body { flex: 1; }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+    }
+    .card-desc {
+      color: #94a3b8;
+      font-size: 0.93rem;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .topic {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      font-family: monospace;
+    }
+    .level-badge {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 10px;
+      border-radius: 999px;
+    }
+    .lv-beginner     { background: #14532d; color: #86efac; }
+    .lv-intermediate { background: #1e3a8a; color: #93c5fd; }
+    .lv-advanced     { background: #4a1d96; color: #d8b4fe; }
+    .lv-expert       { background: #7f1d1d; color: #fca5a5; }
+    .connector {
+      width: 2px;
+      height: 16px;
+      background: #334155;
+      margin: 0 auto;
+      max-width: 860px;
+    }
+    .section-label {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #475569;
+      margin: 8px 0 4px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      color: #475569;
+      font-size: 0.85rem;
+    }
+    .footer strong { color: #94a3b8; }
+    .note {
+      max-width: 860px;
+      margin: 0 auto 24px;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-left: 4px solid #22c55e;
+      border-radius: 8px;
+      padding: 14px 18px;
+      color: #94a3b8;
+      font-size: 0.88rem;
+    }
+    .note strong { color: #e2e8f0; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🟢 Linux <span>Hardening</span> Series</h1>
+  <p>Beginner → Expert · 12 Labs · RHCE + Cloud Security Engineering</p>
+  <div class="badge">📁 ~/Documents/rhce/linux-hardening-labs/</div>
+</div>
+
+<div class="note">
+  🛡️ <strong>Best practiced on a Rocky Linux 9 VM.</strong> Most commands work on any RHEL-based system. Some labs (SELinux, auditd) require Linux — macOS is noted where applicable.
+  Spin up a VM: <code>multipass launch --name rocky-lab</code> or use a cheap AWS EC2 t2.micro.
+</div>
+
+<div class="path">
+
+  <div class="section-label">— Beginner —</div>
+
+  <div class="card">
+    <div class="lab-num beginner">00</div>
+    <div class="card-body">
+      <div class="card-title">Introduction — The Hardening Mindset</div>
+      <div class="card-desc">What hardening is, what you're defending against, and the five core principles: default deny, least privilege, defense in depth, assume breach, and audit everything.</div>
+      <div class="topics">
+        <span class="topic">threat model</span>
+        <span class="topic">attack surface</span>
+        <span class="topic">CIS Benchmark</span>
+        <span class="topic">defense in depth</span>
+        <span class="topic">least privilege</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num beginner">01</div>
+    <div class="card-body">
+      <div class="card-title">User and Password Security</div>
+      <div class="card-desc">Audit user accounts, enforce strong password policies with PAM and pwquality, set password aging, configure account lockout with faillock, and lock down sudo access.</div>
+      <div class="topics">
+        <span class="topic">pwquality.conf</span>
+        <span class="topic">chage</span>
+        <span class="topic">faillock</span>
+        <span class="topic">visudo</span>
+        <span class="topic">sudoers.d</span>
+        <span class="topic">passwd -l</span>
+        <span class="topic">login.defs</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num beginner">02</div>
+    <div class="card-body">
+      <div class="card-title">SSH Hardening</div>
+      <div class="card-desc">The most attacked service on any server. Enforce key-only authentication, harden sshd_config (no root, custom port, allowlists), add a login banner, and block brute force with fail2ban.</div>
+      <div class="topics">
+        <span class="topic">ssh-keygen -t ed25519</span>
+        <span class="topic">PermitRootLogin no</span>
+        <span class="topic">PasswordAuthentication no</span>
+        <span class="topic">AllowUsers</span>
+        <span class="topic">fail2ban</span>
+        <span class="topic">sshd -t</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num beginner">03</div>
+    <div class="card-body">
+      <div class="card-title">Firewall with firewalld</div>
+      <div class="card-desc">Control all inbound traffic with firewalld zones. Allow only what's needed. Use rich rules for per-IP filtering and rate limiting. Build a complete hardened server firewall profile.</div>
+      <div class="topics">
+        <span class="topic">zones</span>
+        <span class="topic">firewall-cmd --permanent</span>
+        <span class="topic">rich rules</span>
+        <span class="topic">rate limiting</span>
+        <span class="topic">--reload</span>
+        <span class="topic">--panic-on</span>
+      </div>
+    </div>
+    <span class="level-badge lv-beginner">Beginner</span>
+  </div>
+
+  <div class="connector"></div>
+  <div class="section-label">— Intermediate —</div>
+
+  <div class="card">
+    <div class="lab-num intermediate">04</div>
+    <div class="card-body">
+      <div class="card-title">SELinux</div>
+      <div class="card-desc">The most powerful security layer on RHEL — and the most misunderstood. Enforce MAC policies that confine even root. Manage file contexts, booleans, and port labels. Troubleshoot denials with audit2why.</div>
+      <div class="topics">
+        <span class="topic">getenforce / setenforce</span>
+        <span class="topic">ls -Z</span>
+        <span class="topic">chcon / restorecon</span>
+        <span class="topic">semanage fcontext</span>
+        <span class="topic">setsebool -P</span>
+        <span class="topic">audit2why</span>
+        <span class="topic">audit2allow</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num intermediate">05</div>
+    <div class="card-body">
+      <div class="card-title">File Permissions and ACLs</div>
+      <div class="card-desc">Find and eliminate dangerous permissions. Audit SUID/SGID binaries. Use ACLs for fine-grained per-user access control. Make critical files immutable with chattr. Set secure umask.</div>
+      <div class="topics">
+        <span class="topic">find -perm -4000</span>
+        <span class="topic">SUID / SGID</span>
+        <span class="topic">sticky bit</span>
+        <span class="topic">getfacl / setfacl</span>
+        <span class="topic">chattr +i</span>
+        <span class="topic">umask 027</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num intermediate">06</div>
+    <div class="card-body">
+      <div class="card-title">Audit Logging with auditd</div>
+      <div class="card-desc">Log everything at the kernel level — file access, privilege escalation, login events, system calls. Write audit rules, search logs with ausearch, generate reports with aureport.</div>
+      <div class="topics">
+        <span class="topic">auditctl -w</span>
+        <span class="topic">-p wa / -p x</span>
+        <span class="topic">-k keyword</span>
+        <span class="topic">ausearch -k</span>
+        <span class="topic">aureport -au</span>
+        <span class="topic">augenrules --load</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num intermediate">07</div>
+    <div class="card-body">
+      <div class="card-title">System Services and Attack Surface</div>
+      <div class="card-desc">Audit every running service and open port. Disable what isn't needed. Remove insecure legacy packages (telnet, ftp). Blacklist unnecessary kernel modules. Harden cron access and systemd unit files.</div>
+      <div class="topics">
+        <span class="topic">ss -tlnup</span>
+        <span class="topic">systemctl disable</span>
+        <span class="topic">dnf remove</span>
+        <span class="topic">modprobe blacklist</span>
+        <span class="topic">cron.allow</span>
+        <span class="topic">systemd-analyze security</span>
+      </div>
+    </div>
+    <span class="level-badge lv-intermediate">Intermediate</span>
+  </div>
+
+  <div class="connector"></div>
+  <div class="section-label">— Advanced —</div>
+
+  <div class="card">
+    <div class="lab-num advanced">08</div>
+    <div class="card-body">
+      <div class="card-title">Kernel Hardening with sysctl</div>
+      <div class="card-desc">Harden the Linux kernel itself. Enable ASLR, SYN cookie protection, anti-spoofing, disable IP forwarding, restrict /proc access, and block kernel pointer leaks. Based on CIS + STIG recommendations.</div>
+      <div class="topics">
+        <span class="topic">sysctl -w</span>
+        <span class="topic">randomize_va_space=2</span>
+        <span class="topic">tcp_syncookies=1</span>
+        <span class="topic">kptr_restrict=2</span>
+        <span class="topic">hidepid=2</span>
+        <span class="topic">/etc/sysctl.d/</span>
+      </div>
+    </div>
+    <span class="level-badge lv-advanced">Advanced</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num advanced">09</div>
+    <div class="card-body">
+      <div class="card-title">Intrusion Detection with AIDE</div>
+      <div class="card-desc">Create a cryptographic filesystem baseline. Detect unauthorized changes to binaries, configs, and libraries. Automate daily checks. Know immediately if an attacker modifies a system file.</div>
+      <div class="topics">
+        <span class="topic">aide --init</span>
+        <span class="topic">aide --check</span>
+        <span class="topic">aide --update</span>
+        <span class="topic">aide.conf</span>
+        <span class="topic">sha512 checksums</span>
+        <span class="topic">systemd timer</span>
+      </div>
+    </div>
+    <span class="level-badge lv-advanced">Advanced</span>
+  </div>
+
+  <div class="connector"></div>
+
+  <div class="card">
+    <div class="lab-num advanced">10</div>
+    <div class="card-body">
+      <div class="card-title">Automate Hardening with Ansible</div>
+      <div class="card-desc">Turn everything in this series into a single Ansible role. One command hardens any server identically. Modular task files per category, validated templates, tags for selective application.</div>
+      <div class="topics">
+        <span class="topic">hardening role</span>
+        <span class="topic">validate: sshd -t</span>
+        <span class="topic">import_tasks</span>
+        <span class="topic">--tags ssh</span>
+        <span class="topic">--check --diff</span>
+        <span class="topic">firewalld module</span>
+      </div>
+    </div>
+    <span class="level-badge lv-advanced">Advanced</span>
+  </div>
+
+  <div class="connector"></div>
+  <div class="section-label">— Expert —</div>
+
+  <div class="card">
+    <div class="lab-num expert">11</div>
+    <div class="card-body">
+      <div class="card-title">Full Audit — CIS Benchmark</div>
+      <div class="card-desc">Score your system against the CIS Benchmark using Lynis and OpenSCAP. Understand the 6 benchmark sections. Remediate findings manually and automatically. Generate compliance reports.</div>
+      <div class="topics">
+        <span class="topic">lynis audit system</span>
+        <span class="topic">openscap</span>
+        <span class="topic">oscap xccdf eval</span>
+        <span class="topic">CIS Level 1/2</span>
+        <span class="topic">hardening score</span>
+        <span class="topic">auto-remediation</span>
+        <span class="topic">compliance report</span>
+      </div>
+    </div>
+    <span class="level-badge lv-expert">Expert ✓</span>
+  </div>
+
+</div>
+
+<div class="footer">
+  <p>Created: 2026-04-07 &nbsp;|&nbsp; <strong>Linux Hardening Series</strong> &nbsp;|&nbsp; Recommended VM: <strong>Rocky Linux 9</strong></p>
+  <p style="margin-top:8px;">Complete in order · Do every challenge · Always test on a VM before applying to production</p>
+</div>
+
+</body>
+</html>
